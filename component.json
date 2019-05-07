@@ -1,0 +1,118 @@
+{
+    "title": "SubscriptionsManagementClient",
+    "description": "The Admin Subscriptions Management Client.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/azsadmin-OfferDelegation/2015-11-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://adminmanagement.local.azurestack.external/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "OfferDelegations_List": {
+            "main": "./lib/actions/OfferDelegations_List.js",
+            "title": "Get the list of offer delegations.",
+            "description": "Get the list of offer delegations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/OfferDelegations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "OfferDelegations_Delete": {
+            "main": "./lib/actions/OfferDelegations_Delete.js",
+            "title": "Delete the specified offer delegation.",
+            "description": "Delete the specified offer delegation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/OfferDelegations_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "OfferDelegations_Get": {
+            "main": "./lib/actions/OfferDelegations_Get.js",
+            "title": "Get the specified offer delegation.",
+            "description": "Get the specified offer delegation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/OfferDelegations_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "OfferDelegations_CreateOrUpdate": {
+            "main": "./lib/actions/OfferDelegations_CreateOrUpdate.js",
+            "title": "Create or update the offer delegation.",
+            "description": "Create or update the offer delegation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/OfferDelegations_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
